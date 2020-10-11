@@ -39,6 +39,7 @@ You must answer in %d sec. You lose one life when you make\n\
 a mistake or don't answer in time.\n\
 ------------------------------------------------------------\n\
 ", anstime);
+	/* initialize drawing area */
 	printf("Life:");
 	for(int i = 0; i < life; i++) printf(" *");
 	printf("\n\n              ->  \n\n");
@@ -49,13 +50,16 @@ a mistake or don't answer in time.\n\
 	printf("\e[6A");
 
 	/* main loop */
-	while(score <= 99999999){
+	while(score <= 99999999){ /* limit score to 8 digits */
+		/* redraw */
 		printf("\e[2KLife:");
 		for(int i = 0; i < life; i++) printf(" *");
 		printf("\n\e[2K\n\e[2K    %-8d  ->  \n\e[2K\n", score);
 		printf("(      ms )[");
 		for(i = 0; i < 100; i++) putchar('|');
 		printf("]\n[Left] Fizz     [Down] %-8d [Right] Buzz\n", score);
+
+		/* prepare flags */
 		gettimeofday(&tstart, NULL);
 		ans = 0;
 		if(score % 3 == 0) ans += 1;
@@ -63,11 +67,13 @@ a mistake or don't answer in time.\n\
 		barsnow = 100;
 		input = -1;
 		cont = 0;
+		/* input-waiting loop */
 		while(1){
 			gettimeofday(&tnow, NULL);
 			remainus = anstime * 1000000L;
 			remainus -= (tnow.tv_sec - tstart.tv_sec) * 1000000L + (tnow.tv_usec - tstart.tv_usec);
 			if(remainus < 0) remainus = 0;
+			/* input-processing loop */
 			while((c = getchar()) != EOF){
 				switch(c){
 					case 'D': input = 1; break;
@@ -102,7 +108,7 @@ a mistake or don't answer in time.\n\
 			ts.tv_sec = 0;
 			ts.tv_nsec = 10000000;
 			nanosleep(&ts, NULL);
-		}
+		} /* input is always -1 here when cont is 1 */
 		if(cont) input = 1;
 		if(input == ans){
 			ts.tv_sec = 0;
@@ -118,8 +124,8 @@ a mistake or don't answer in time.\n\
 				if(ans == 0) printf("%d", score);
 				printf("'.");
 			}
-			life--;
 			printf("\n\n\n");
+			life--;
 			if(life <= 0) break;
 			printf("\e[A\e[2K* Press [Space] key to continue *\n");
 			while(getchar() != ' ');
