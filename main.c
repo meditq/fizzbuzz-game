@@ -52,7 +52,7 @@ You lose one life when you make a mistake or don't answer in time.\n\
 	while(score <= 99999999){
 		printf("\e[2KLife:");
 		for(int i = 0; i < life; i++) printf(" *");
-		printf("\n\e[2K\n    %-8d  ->  \n\e[2K\n", score);
+		printf("\n\e[2K\n\e[2K    %-8d  ->  \n\e[2K\n", score);
 		printf("(      ms )[");
 		for(i = 0; i < 100; i++) putchar('|');
 		printf("]\n[Left] Fizz     [Down] %-8d [Right] Buzz\n", score);
@@ -75,7 +75,7 @@ You lose one life when you make a mistake or don't answer in time.\n\
 					case 'C': input = 2; break;
 				}
 				if(input != -1){
-					printf("\e[4F\e[14C");
+					printf("\e[4F\e[18C");
 					if(cont) printf("\e[4C");
 					switch(input){
 						case 1: printf("Fizz"); break;
