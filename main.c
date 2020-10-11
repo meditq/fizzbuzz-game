@@ -46,7 +46,7 @@ You lose one life when you make a mistake or don't answer in time.\n\
 	for(i = 0; i < 100; i++) putchar('|');
 	printf("]\n* Press [Space] key to start *\n");
 	while(getchar() != ' ');
-	printf("\e[6F");
+	printf("\e[6A");
 
 	/* main loop */
 	while(score <= 99999999){
@@ -75,7 +75,7 @@ You lose one life when you make a mistake or don't answer in time.\n\
 					case 'C': input = 2; break;
 				}
 				if(input != -1){
-					printf("\e[4F\e[18C");
+					printf("\e[4A\e[18C");
 					if(cont) printf("\e[4C");
 					switch(input){
 						case 1: printf("Fizz"); break;
@@ -95,7 +95,7 @@ You lose one life when you make a mistake or don't answer in time.\n\
 			}
 			barsold = barsnow;
 			barsnow = (remainus + anstime * 10000 - 1) / (anstime * 10000);
-			printf("\e[2F\e[2C%4ld\e[%dC", (remainus + 999) / 1000, 6 + barsnow);
+			printf("\e[2A\e[2C%4ld\e[%dC", (remainus + 999) / 1000, 6 + barsnow);
 			for(i = barsnow; i < barsold; i++) putchar(' ');
 			printf("\n\n");
 			if(input != -1 || remainus <= 0) break;
@@ -109,7 +109,7 @@ You lose one life when you make a mistake or don't answer in time.\n\
 			ts.tv_nsec = 250000000;
 			nanosleep(&ts, NULL);
 		}else{
-			printf("\e[3F");
+			printf("\e[3A");
 			if(input == -1) printf("Time over!");
 			else{
 				printf("Wrong! The answer is '");
@@ -121,11 +121,11 @@ You lose one life when you make a mistake or don't answer in time.\n\
 			life--;
 			printf("\n\n\n");
 			if(life <= 0) break;
-			printf("\e[F\e[2K* Press [Space] key to continue *\n");
+			printf("\e[A\e[2K* Press [Space] key to continue *\n");
 			while(getchar() != ' ');
 		}
 		score++;
-		printf("\e[6F");
+		printf("\e[6A");
 	}
 	printf("\nGAME OVER\nYour score was %d.\n\n", score - 1);
 	system("stty echo icanon");
