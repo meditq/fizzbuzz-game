@@ -50,7 +50,7 @@ a mistake or don't answer in time.\n\
 	printf("\e[6A");
 
 	/* main loop */
-	while(score <= 99999999){ /* limit score to 8 digits */
+	while(1){
 		/* redraw */
 		printf("\e[2KLife:");
 		for(int i = 0; i < life; i++) printf(" *");
@@ -131,6 +131,7 @@ a mistake or don't answer in time.\n\
 			while(getchar() != ' ');
 		}
 		score++;
+		if(score > 99999999) break; /* limit score to 8 digits */
 		printf("\e[6A");
 	}
 	printf("\nGAME OVER\nYour score was %d.\n\n", score - 1);
