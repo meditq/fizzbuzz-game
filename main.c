@@ -14,7 +14,7 @@ int main(int argc, char **argv){
 	if(argc >= 2) life = atoi(argv[1]);
 	if(life <= 0){
 		fprintf(stderr, "\
-FizzBuzz Game v1.0 - 2020-10-12\n\
+FizzBuzz Game v1.00 - 2020-10-12\n\
 Copyright (c) 2020 medit\n\
 \n\
     Usage: ./fbgame [lives]\n\
