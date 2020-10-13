@@ -63,6 +63,7 @@ You must answer in %d sec. You lose one life when you make\n\
 a mistake or don't answer in time.\n\
 ------------------------------------------------------------\n\
 ", anstime);
+
 	/* initialize drawing area */
 	printf("Life:");
 	for(int i = 0; i < life; i++) printf(" *");
@@ -71,12 +72,11 @@ a mistake or don't answer in time.\n\
 	for(i = 0; i < 100; i++) putchar('|');
 	printf("]\n* Press [Space] key to start *\n");
 	while(getchar() != ' ');
-	printf("\e[6A");
 
 	/* main loop */
 	while(1){
 		/* redraw */
-		printf("\e[2KLife:");
+		printf("\e[6A\e[2KLife:");
 		for(int i = 0; i < life; i++) printf(" *");
 		printf("\n\e[2K\n\e[2K    %-8d  ->  \n\e[2K\n", score);
 		printf("(      ms )[");
@@ -156,7 +156,6 @@ a mistake or don't answer in time.\n\
 		}
 		score++;
 		if(score > 99999999) break; /* limit score to 8 digits */
-		printf("\e[6A");
 	}
 	printf("\nGAME OVER\nYour score was %d.\n\n", score - 1);
 	system("stty echo icanon");
