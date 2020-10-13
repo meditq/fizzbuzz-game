@@ -1,3 +1,8 @@
+/*
+    Copyright (c) 2020 medit
+    Distributed under the MIT License. See ./LICENSE.
+*/
+
 #include <sys/time.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +23,7 @@ int main(int argc, char **argv){
 \n\
 FizzBuzz Game v1.00 - 2020-10-12\n\
 Copyright (c) 2020 medit\n\
-This software is released under the MIT License.\n\
+This software is distributed under the MIT License.\n\
 \n\
     Usage: ./fbgame [lives]\n\
 \n\
