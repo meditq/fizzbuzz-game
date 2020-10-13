@@ -138,6 +138,7 @@ a mistake or don't answer in time.\n\
 			ts.tv_sec = 0;
 			ts.tv_nsec = 250000000;
 			nanosleep(&ts, NULL);
+			while(getchar() != EOF);
 		}else{
 			printf("\e[3A");
 			if(input == -1) printf("Time over!");
