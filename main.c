@@ -17,25 +17,41 @@ int main(int argc, char **argv){
 	struct timespec ts;
 	struct timeval tstart, tnow;
 	long remainus;
-	if(argc >= 2) life = atoi(argv[1]);
-	if(life <= 0){
-		fprintf(stderr, "\
+
+	while((c = getopt(argc, argv, "hl:t:")) != -1){
+		switch(c){
+			case 'l': life = atoi(optarg); break;
+			case 't': anstime = atoi(optarg); break;
+			case 'h':
+			default:
+				fprintf(stderr, "\
 \n\
 FizzBuzz Game v1.00 - 2020-10-12\n\
 Copyright (c) 2020 medit\n\
 This software is distributed under the MIT License.\n\
 \n\
-    Usage: ./fbgame [lives]\n\
+  Usage: ./fbgame [-h] [-l <lives>] [-t <answer_time>]\n\
 \n\
-`lives` must be a positive integer.\n\
-If not specified, 1 is used.\n\
+      -l    number of lives (positive integer, 1 to 99)\n\
+      -t    length of answer time (in seconds, 1 to 9)\n\
+      -h    show this help\n\
 \n\
 ");
+				return 1;
+		}
+	}
+	if(life <= 0 || life >= 99){
+		fprintf(stderr, "error: wrong number of lives (must be 1 to 99)\n");
+		return 1;
+	}
+	if(anstime <= 0 || anstime >= 10){
+		fprintf(stderr, "error: wrong answer time (must be 1 to 9 seconds)\n");
 		return 1;
 	}
 	system("stty -echo -icanon");
 	fcntl(0, F_SETFL, fcntl(0, F_GETFL, 0) | O_NONBLOCK);
 	printf("\
+\n\
 FizzBuzz Game\n\
 \n\
 ----------------------- How to play -----------------------\n\
