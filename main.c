@@ -26,7 +26,7 @@ int main(int argc, char **argv){
 			default:
 				fprintf(stderr, "\
 \n\
-FizzBuzz Game v1.00 - 2020-10-12\n\
+FizzBuzz Game v1.10 - 2020-10-12\n\
 Copyright (c) 2020 medit\n\
 This software is distributed under the MIT License.\n\
 \n\
