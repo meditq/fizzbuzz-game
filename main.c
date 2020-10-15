@@ -26,15 +26,15 @@ int main(int argc, char **argv){
 			default:
 				fprintf(stderr, "\
 \n\
-FizzBuzz Game v1.10 - 2020-10-14\n\
+FizzBuzz Game v1.11 - 2020-10-14\n\
 Copyright (c) 2020 medit\n\
 This software is distributed under the MIT License.\n\
 \n\
-  Usage: %s [-h] [-l <lives>] [-t <answer_time>]\n\
+  Usage: %s [-h] [-l <lives>] [-t <time>]\n\
 \n\
-      -l    number of lives (positive integer, 1 to 99)\n\
-      -t    length of answer time (in seconds, 1 to 9)\n\
-      -h    show this help\n\
+  -l <lives>  number of lives (positive integer, 1 to 99)\n\
+  -t <time>   length of answer time (in seconds, 1 to 9)\n\
+  -h          show this help\n\
 \n\
 ", argv[0]);
 				return 1;
