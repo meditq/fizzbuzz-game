@@ -1,12 +1,13 @@
 PROGRAMS = fbgame
+CC = gcc -std=gnu99
 
 all: $(PROGRAMS)
 
 fbgame: main.o
-	gcc -o $@ $^
+	$(CC) -o $@ $^
 
 .c.o: 
-	gcc -c $<
+	$(CC) -c $<
 
 clean: 
 	rm -f $(PROGRAMS) *.o
