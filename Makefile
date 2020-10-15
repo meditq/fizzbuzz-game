@@ -1,5 +1,7 @@
 PROGRAMS = fbgame
 
+all: $(PROGRAMS)
+
 fbgame: main.o
 	gcc -o $@ $^
 
